@@ -1,0 +1,79 @@
+<!-- html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traccar API Example</title>
+</head>
+<body>
+    <div id="positions"></div>
+
+    <script>
+        // สร้างฟังก์ชันสำหรับเรียกใช้ API ของ Traccar
+        function fetchTraccarData() {
+            // ใส่ URL ของ API ของ Traccar ที่ต้องการเรียกใช้
+            const apiUrl = 'https://13.213.32.238:8082/api/positions';
+            
+            // ใส่ API Key หรือ Token ที่ได้จากการเข้าสู่ระบบ Traccar
+            const apiKey = 'RjBEAiBHXbsFC7SzPEHJCWaf3yAcQ6Z24aCaOz5RgqDXBMiMQgIgTwU0V3ZkO9KL3FQvuU2W2esWXUbZfTyTOfV4tvD0NlJ7InUiOjEsImUiOiIyMDI0LTA1LTEyVDE3OjAwOjAwLjAwMCswMDowMCJ9';
+
+            // เรียกใช้ API โดยใช้ Fetch API
+            fetch(apiUrl, {
+                headers: {
+                    'Authorization': 'Basic ' + btoa(apiKey + ':')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // เมื่อได้ข้อมูลจาก API มาแล้ว แสดงผลใน HTML
+                const positionsDiv = document.getElementById('positions');
+                positionsDiv.innerHTML = '<h2>Device Positions</h2>';
+                data.forEach(position => {
+                    positionsDiv.innerHTML += `
+                        <p>Device ID: ${position.deviceId}</p>
+                        <p>Latitude: ${position.latitude}</p>
+                        <p>Longitude: ${position.longitude}</p>
+                        <hr>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // เรียกใช้งานฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
+        window.onload = fetchTraccarData;
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>try traccar api</title>
+  </head>
+  <body>
+    <script src="js/jquery-2.2.2.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      var name = "Bus 3";
+      var uid = "1243232133";
+      $.ajax({
+        type: 'post',
+        url: 'http://103.23.20.176:8082/api/devices/',
+        headers: {
+            "Authorization": "Basic " + btoa("email:pass")
+        },
+        contentType:"application/json",
+        data:JSON.stringify({
+          name:name,
+          uniqueId:uid
+        }),
+        success: function (response) {
+            console.log(response);
+        }
+      });
+    </script>
+  </body>
+</html>

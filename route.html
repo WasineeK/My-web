@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map with Route</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+    <!-- เรียกใช้ Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJNYHywWnFfn3RdPji8ty8q6e-2t7YSJA&callback=initMap" async defer></script>
+    <script>
+        // ฟังก์ชัน initMap เริ่มต้นการสร้างแผนที่
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 6,
+                center: {lat: 14.0360620, lng: 100.7316547} // ตำแหน่งเริ่มต้นในกรุงเทพฯ
+            });
+            
+            // สร้างเส้นทางระหว่างสองจุด รถรางสาย 1
+            var directionsService = new google.maps.DirectionsService();
+            var directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map);
+            
+            var start = new google.maps.LatLng(14.0360620, 100.7316547); // ตำแหน่งเริ่มต้น 14.0360620, 100.7316547 ประตู 3
+            var end = new google.maps.LatLng(14.0359784, 100.7310633);    // ตำแหน่งปลายทาง 14.0359784, 100.7310633 ครุ
+            
+            var waypoints = [
+                {location: new google.maps.LatLng(14.037403, 100.731524)}, // ตำแหน่งจุดที่ 2 14.037403, 100.731524 บริหาร
+                {location: new google.maps.LatLng(14.0397722, 100.7307595)}, // ตำแหน่งจุดที่ 3 14.0397722, 100.7307595 ดุริยางค์
+                {location: new google.maps.LatLng(14.0391383, 100.7302922)}, // ตำแหน่งจุดที่ 4 14.0391383, 100.7302922 รป
+                {location: new google.maps.LatLng(14.037846, 100.729131)},  // ตำแหน่งจุดที่ 5 14.037846, 100.729131 ศิลปศาสตร์
+                {location: new google.maps.LatLng(14.039038, 100.728355)},  // ตำแหน่งจุดที่ 7 14.039038, 100.728355 วิทยาศาสตร์,สถาบันเคมี
+                {location: new google.maps.LatLng(14.039031, 100.726729)},  // ตำแหน่งจุดที่ 8 14.039031, 100.726729 สื่อสารมวลชน
+                {location: new google.maps.LatLng(14.039034, 100.726302)},  // ตำแหน่งจุดที่ 9 14.039034, 100.726302 วิศวเกษตร
+                {location: new google.maps.LatLng(14.039023, 100.725454)},  // ตำแหน่งจุดที่ 10 14.039023, 100.725454 อาคารปฏิบัติเกษตร
+                {location: new google.maps.LatLng(14.038500, 100.725151)},  // ตำแหน่งจุดที่ 11 14.038500, 100.725151 อาคารสิ่งทอ,พลาสติก
+                {location: new google.maps.LatLng(14.037009, 100.723708)},  // ตำแหน่งจุดที่ 12 14.037009, 100.723708 พยาบาล
+                {location: new google.maps.LatLng(14.036639, 100.724383)},  // ตำแหน่งจุดที่ 13 14.036639, 100.724383 องค์การนักศึกษา
+                {location: new google.maps.LatLng(14.035283, 100.724908)},  // ตำแหน่งจุดที่ 14 14.035283, 100.724908 โรงอาหารกลาง
+                {location: new google.maps.LatLng(14.033923, 100.724361)},  // ตำแหน่งจุดที่ 15 14.033923, 100.724361 ยิมเนเซียม
+                {location: new google.maps.LatLng(14.033898, 100.722616)},  // ตำแหน่งจุดที่ 16 14.033898, 100.722616 สนามกีฬา
+                {location: new google.maps.LatLng(14.032837, 100.722610)},  // ตำแหน่งจุดที่ 17 14.032837, 100.722610 หอใน
+                {location: new google.maps.LatLng(14.035820, 100.725931)},  // ตำแหน่งจุดที่ 18 14.035820, 100.725931 คณะวิศวะ
+                {location: new google.maps.LatLng(14.035974, 100.726684)},  // ตำแหน่งจุดที่ 19 14.035974, 100.726684 หอประชุมราชมงคล
+                {location: new google.maps.LatLng(14.036005, 100.729722)},  // ตำแหน่งจุดที่ 21 14.036005, 100.729722 ทะเบียน
+
+            ];
+
+            var request = {
+                origin: start,
+                destination: end,
+                waypoints: waypoints.map(waypoint => ({location: waypoint.location})),
+                travelMode: 'DRIVING'
+            };
+            
+            directionsService.route(request, function(response, status) {
+                if (status === 'OK') {
+                    directionsRenderer.setDirections(response);
+                } else {
+                    window.alert('การค้นหาเส้นทางไม่สำเร็จเนื่องจาก ' + status);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- ส่วนที่ใช้แสดงแผนที่ -->
+    <div id="map"></div>
+</body>
+</html>

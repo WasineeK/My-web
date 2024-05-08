@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Map with Marker</title>
+
+    <!-- เพิ่มไฟล์ JavaScript API ของ Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmCjT-nuIqRHU_D74JzwkU2Ll4AqKvalk&callback=initIndexMap"></script>
+    <!-- ใส่ YOUR_API_KEY ด้วย API key ที่คุณได้จาก Google Cloud Console -->
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <nav>
+        <div class="logo">
+            <a class="tramrmutt">Tram RMUTT</a>
+        </div>
+       
+    </nav>
+
+    <!-- <div id="map"></div>
+    <a href="search.html" class="search">
+        <button class="search-bottom">ค้นหาสถานที่</button>
+    </a> -->
+
+    <a href="search.html" class="search">
+        <button class="search-bottom">ค้นหาสถานที่</button>
+    </a>
+    <script src="indexScript.js"></script>
+
+    <div id="map"></div> 
+    
+    <!-- <script>
+        // เมื่อโหลดหน้าเสร็จสมบูรณ์
+        window.onload = function () { 
+            // สร้างตัวแปร mapOptions เพื่อกำหนดตั้งค่าของแผนที่
+            var mapOptions = {
+                center: { lat: 14.0360620, lng: 100.7316547 }, // ตำแหน่งเริ่มต้น (ละติจูด และ ลองจิจูด ของกรุงเทพมหานคร)
+                zoom: 20, // ขนาดการซูม
+                mapTypeId: google.maps.MapTypeId.roadmap // ประเภทของแผนที่
+            };
+
+           // สร้างแผนที่ด้วยตัวแปร mapOptions
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        };
+    </script>  -->
+    
+</body>
+</html>

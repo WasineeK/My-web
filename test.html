@@ -1,0 +1,113 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+  <title>Location Map</title>
+  <script src="https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.4.1/firebase-database.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyDA7w3o2nOdYAoimcn939BFq2K6DcD7e7s",
+      authDomain: "Ytramrmutt.firebaseapp.com",
+      databaseURL: "https://test-9f745-default-rtdb.asia-southeast1.firebasedatabase.app/",
+      projectId: "tramrmutt",
+      storageBucket: "tramrmutt.appspot.com",
+      messagingSenderId: "884109320380",
+      appId: "1:884109320380:web:69e388e3db883cb3a5f0b9",
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var database = firebase.database().ref('locations');
+
+    database.on('value', function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var childData = childSnapshot.val();
+        var latitude = childData.latitude;
+        var longitude = childData.longitude;
+        // Use latitude and longitude to display markers on the map
+        console.log(latitude, longitude);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    // Initialize and display the map
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+          lat: 0,
+          lng: 0
+        },
+        zoom: 3
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJNYHywWnFfn3RdPji8ty8q6e-2t7YSJA&callback=initMap"></script>
+</body>
+
+</html> เชื่อมกับแอป-->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+</head>
+
+<body>
+  <h2>Login</h2>
+  <form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <button type="submit">Login</button>
+  </form> -->
+
+<!-- Firebase SDK -->
+<!-- <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"></script>
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDA7w3o2nOdYAoimcn939BFq2K6DcD7e7s",
+      authDomain: "tramrmutt.firebaseapp.com",
+      projectId: "tramrmutt",
+      storageBucket: "tramrmutt.appspot.com",
+      messagingSenderId: "884109320380",
+      appId: "1:884109320380:web:69e388e3db883cb3a5f0b9",
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Login form submission
+    const loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = loginForm.username.value;
+      const password = loginForm.password.value;
+
+      // Firebase authentication
+      firebase.auth().signInWithEmailAndPassword(username, password)
+        .then((userCredential) => {
+          // Redirect to main page or do something else upon successful login
+          window.location.href = "index.html";
+        })
+        .catch((error) => {
+          // Clear input fields and display error message
+          loginForm.reset();
+          alert("Incorrect username or password. Please try again.");
+        });
+    });
+  </script>
+</body>
+
+</html> อาจจะใช้-->
+
+
